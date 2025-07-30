@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态渐变背景</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 1.5s ease;
+            font-family: 'Arial', sans-serif;
+        }
+        .password-text {
+            font-size: 2rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="password-text">密码:1145qqrt</div>
+
+    <script>
+        // 生成随机渐变色
+        function getRandomGradient() {
+            const hue1 = Math.floor(Math.random() * 360);
+            const hue2 = (hue1 + 120) % 360; // 确保两个颜色有足够对比度
+            return `linear-gradient(45deg, hsl(${hue1}, 70%, 60%), hsl(${hue2}, 70%, 60%))`;
+        }
+
+        // 定时更新背景
+        setInterval(() => {
+            document.body.style.background = getRandomGradient();
+        }, 3000); // 每3秒切换一次
+
+        // 初始设置背景
+        document.body.style.background = getRandomGradient();
+    </script>
+</body>
+</html>
